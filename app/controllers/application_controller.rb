@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def hello
-    render text: "<h1>Hello!</h1><p>Welcome to KimWiki!</p>"
+    render text: "<h1>KimWiki</h1><p>Please excuse our mess while we build the site!</p>"
   end
 end
