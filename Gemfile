@@ -39,3 +39,6 @@ end
 
 # Use HAML rather than ERB for developing views
 gem 'haml-rails'
+
+# Use Twitter Bootstrap as CSS framework
+gem 'bootstrap-sass', '~>3.1.1'
