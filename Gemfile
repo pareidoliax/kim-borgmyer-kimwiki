@@ -42,3 +42,24 @@ gem 'haml-rails'
 
 # Use Twitter Bootstrap as CSS framework
 gem 'bootstrap-sass', '~>3.1.1'
+
+# User authentication
+gem 'devise'
+
+# User authorization
+gem 'pundit'
+
+# Secure application
+gem 'figaro', '1.0'
+
+# Allow markdown
+gem 'redcarpet'
+
+# Payment system
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+# Create readable URLs
+gem 'friendly_id', '~> 5.0.0'
+
+# Client-side markdown editor
+gem 'epic-editor-rails', '~> 0.2.3'
