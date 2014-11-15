@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Kimwiki::Application.config.secret_key_base = '894a9ed07639122790fbd9526ec82063afb7551a99f6618c07f3110083d031e9162fb6049ed0b550e9c341ba8c6775ef6eb49d244537e0e4f11de475f8fa931d'
+Kimwiki::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
