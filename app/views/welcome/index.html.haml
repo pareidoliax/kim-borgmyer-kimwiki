@@ -1,4 +1,24 @@
 %br/
 .jumbotron
   %h1 KimWiki
-  %p KimWiki is a resource for collaborating with others!
+  %p Welcome to KimWiki, a place for collaboration.
+  %p Join us! Users who choose the free plan can create and view public wikis. Those who choose the premium plan can also create private wikis and collaborate with others on shared interests.
+
+  %p Not ready to commit? You can still view any public wiki. Hope to see you soon!
+
+  %br/
+  %div{:align => "center"}
+    = link_to "Sign In", new_user_session_path, class: 'btn btn-primary'
+
+.container
+  .row
+    .col-md-6
+      %p{:align => "center"} Create and View Public Wikis
+      %div{:style => "text-align:center"}
+        %img{:src => "https://s3.amazonaws.com/kborgmeyer-images/Freemium-Icon.jpg"}
+      %h2{:align => "center"} Free Plan
+    .col-md-6
+      %p{:align => "center"} Create Private Wikis
+      %div{:style => "text-align:center"}
+        %img{:src => "https://s3.amazonaws.com/kborgmeyer-images/Freemium-Icon-NO11.jpg"}
+      %h2{:align => "center"} Premium Plan
