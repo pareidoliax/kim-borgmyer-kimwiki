@@ -63,3 +63,6 @@ gem 'friendly_id', '~> 5.0.0'
 
 # Client-side markdown editor
 gem 'epic-editor-rails', '~> 0.2.3'
+
+# Pagination
+gem 'will_paginate-bootstrap'

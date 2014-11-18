@@ -1,4 +1,6 @@
 Kimwiki::Application.routes.draw do
+  resources :wikis
+  
   devise_for :users
   resources :users, only: [:update]
   
