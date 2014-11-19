@@ -1,2 +1,12 @@
-%h1= @wiki.title
-%p= @wiki.body
+%h1{align: "center"}= @wiki.markdown_title
+
+%br/
+.row
+  .col-md-8.col-md-offset-2
+    = raw @wiki.markdown_body
+
+%br/
+.row{align: "center"}
+  = link_to(edit_wiki_path(@wiki), class: 'btn btn-primary') do
+    %i.glyphicon.glyphicon-pencil.glyphicon-white
+    edit

@@ -13,7 +13,7 @@
           - unless @wikis.empty?
             - @wikis.each do |wiki|
               %tr
-                %td= wiki.title
+                %td= wiki.markdown_title
                 %td
                   = link_to(wiki_path(wiki), class: 'btn btn-default', method: :get) do
                     %i.glyphicon.glyphicon-eye-open.glyphicon-black
@@ -37,4 +37,3 @@
     = link_to(new_wiki_path(@wiki), class: 'btn btn-success') do
       %i.glyphicon.glyphicon-plus.glyphicon-white
       New
-
