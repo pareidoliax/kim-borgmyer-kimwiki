@@ -7,8 +7,9 @@
   %p Not ready to commit? You can still view any public wiki. Hope to see you soon!
 
   %br/
-  %div{:align => "center"}
-    = link_to "Sign In", new_user_session_path, class: 'btn btn-primary'
+  - if !current_user
+    %div{:align => "center"}
+      = link_to "Sign In", new_user_session_path, class: 'btn btn-primary'
 
 .container
   .row

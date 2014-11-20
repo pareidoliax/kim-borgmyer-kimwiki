@@ -1,2 +1,28 @@
-%h1 Wikis#new
-%p Find me in app/views/wikis/new.html.haml
+%h1{align: "center"} New Wiki
+
+%br/
+.row
+  .col-md-8.col-md-offset-2
+
+    = form_for @wiki do |f|
+
+      .well.well-lg
+
+        .form-group
+          = f.label :title
+          = f.text_field :title, class: 'form-control', required: :true
+
+        %br/
+
+        .form-group
+          = f.label :body, 'Text'
+          = f.text_area :body, rows: 20, class: 'form-control', required: true
+
+        .form-group
+          %label.checkbox{ for: "public" }
+          = f.label :public
+          = f.check_box :public
+
+        %p{align: "center"}
+          = f.submit "Save", class: 'btn btn-success'
+          = link_to "Cancel", :back, class: 'btn btn-danger'

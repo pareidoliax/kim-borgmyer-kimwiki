@@ -3,7 +3,9 @@
 %br/
 .row
   .col-md-8.col-md-offset-2
-    = raw @wiki.markdown_body
+    .panel.panel-default
+      .panel-body
+        = @wiki.markdown_body
 
 %br/
 .row{align: "center"}
