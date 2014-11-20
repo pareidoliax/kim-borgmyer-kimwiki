@@ -7,12 +7,12 @@
       <%= devise_error_messages! %>
 
       <div class="form-group">
-        <%= f.label :email %>
+        <%= f.label :email, class: "sr-only" %>
         <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password %>
+        <%= f.label :password, class: "sr-only" %>
         <%= f.password_field :password, class: 'form-control', placeholder: "Password" %>
       </div>
 
