@@ -14,7 +14,7 @@
             - @wikis.each do |wiki|
               %tr
                 %td= wiki.markdown_title
-                %td
+                %td.btn_toolbar
                   = link_to(wiki_path(wiki), class: 'btn btn-default', method: :get) do
                     %i.glyphicon.glyphicon-eye-open.glyphicon-black
                     show
