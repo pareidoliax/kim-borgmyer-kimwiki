@@ -66,3 +66,6 @@ gem 'epic-editor-rails', '~> 0.2.3'
 
 # Pagination
 gem 'will_paginate-bootstrap'
+
+# Seed data
+gem 'faker'
