@@ -1,8 +1,8 @@
-%h1{align: "center"} Wikis
+%h1 Wikis
 
 .container
   .row
-    .col-md-10.col-md-offset-1
+    .col-md-10
 
       %table.table.table-striped.table-bordered.table-condensed
         %thead
@@ -18,12 +18,14 @@
                   = link_to(wiki_path(wiki), class: 'btn btn-default', method: :get) do
                     %i.glyphicon.glyphicon-eye-open.glyphicon-black
                     show
-                  = link_to(edit_wiki_path(wiki), class: 'btn btn-primary', method: :get) do
-                    %i.glyphicon.glyphicon-pencil.glyphicon-white
-                    edit
-                  = link_to(wiki_path(wiki), class: 'btn btn-danger', method: :delete) do
-                    %i.glyphicon.glyphicon-trash.glyphicon-white
-                    delete
+                  - if policy(wiki).edit?
+                    = link_to(edit_wiki_path(wiki), class: 'btn btn-primary', method: :get) do
+                      %i.glyphicon.glyphicon-pencil.glyphicon-white
+                      edit
+                  - if policy(wiki).destroy?
+                    = link_to(wiki_path(wiki), class: 'btn btn-danger', method: :delete) do
+                      %i.glyphicon.glyphicon-trash.glyphicon-white
+                      delete
           - else
             %td No wikis found
             %td
@@ -32,8 +34,9 @@
   .col-md-4.col-md-offset-4
     = will_paginate @wikis, renderer: BootstrapPagination::Rails, class: 'pager'
 
-.row
-  .col-md-10.col-md-offset-1
-    = link_to(new_wiki_path(@wiki), class: 'btn btn-success') do
-      %i.glyphicon.glyphicon-plus.glyphicon-white
-      New
+- if policy(Wiki.new).create?
+  .row
+    .col-md-10
+      = link_to(new_wiki_path(@wiki), class: 'btn btn-success') do
+        %i.glyphicon.glyphicon-plus.glyphicon-white
+        New

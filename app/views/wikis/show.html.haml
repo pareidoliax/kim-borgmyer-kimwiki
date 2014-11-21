@@ -7,8 +7,9 @@
       .panel-body
         = @wiki.markdown_body
 
-%br/
-.row{align: "center"}
-  = link_to(edit_wiki_path(@wiki), class: 'btn btn-primary') do
-    %i.glyphicon.glyphicon-pencil.glyphicon-white
-    edit
+- if policy(@wiki).edit?
+  %br/
+  .row{align: "center"}
+    = link_to(edit_wiki_path(@wiki), class: 'btn btn-primary') do
+      %i.glyphicon.glyphicon-pencil.glyphicon-white
+      edit

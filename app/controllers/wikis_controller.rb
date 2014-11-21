@@ -1,6 +1,7 @@
 class WikisController < ApplicationController
   def create
     @wiki = Wiki.new(params.require(:wiki).permit(:title, :body, :public))
+    authorize @wiki
 
     if @wiki.save
       flash[:notice] = "Wiki saved."
@@ -17,24 +18,27 @@ class WikisController < ApplicationController
 
     authorize @wiki
     if @wiki.destroy
-      flash[:notice] = "\"#{title}\" deleted successfully."
+      flash[:notice] = "\"#{title}\" deleted."
       redirect_to wikis_path
     else
-      flash[:notice] = "\"#{title}\" not deleted."
+      flash[:notice] = "Error deleting \"#{title}\"; please try again."
       render :show
     end
   end
 
   def edit
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def index
     @wikis = Wiki.paginate(page: params[:page], per_page: 10)
+    authorize @wikis
   end
 
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   def show
@@ -43,6 +47,7 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
 
     if @wiki.update_attributes(params.require(:wiki).permit(:title, :body, :public))
       flash[:notice] = "Wiki updated."
