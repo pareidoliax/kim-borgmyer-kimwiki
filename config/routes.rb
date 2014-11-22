@@ -3,6 +3,7 @@ Kimwiki::Application.routes.draw do
   
   devise_for :users
   resources :users, only: [:update]
+  resources :charges, only: [:new, :create]
   
   get 'about' => 'welcome#about'
 

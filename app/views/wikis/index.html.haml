@@ -15,17 +15,18 @@
               %tr
                 %td= wiki.markdown_title
                 %td
-                  = link_to(wiki_path(wiki), class: 'btn btn-default', method: :get) do
-                    %i.glyphicon.glyphicon-eye-open.glyphicon-black
-                    show
-                  - if policy(wiki).edit?
-                    = link_to(edit_wiki_path(wiki), class: 'btn btn-primary', method: :get) do
-                      %i.glyphicon.glyphicon-pencil.glyphicon-white
-                      edit
-                  - if policy(wiki).destroy?
-                    = link_to(wiki_path(wiki), class: 'btn btn-danger', method: :delete) do
-                      %i.glyphicon.glyphicon-trash.glyphicon-white
-                      delete
+                  %div.btn-toolbar
+                    = link_to(wiki_path(wiki), class: 'btn btn-default', method: :get) do
+                      %i.glyphicon.glyphicon-eye-open.glyphicon-black
+                      show
+                    - if policy(wiki).edit?
+                      = link_to(edit_wiki_path(wiki), class: 'btn btn-primary', method: :get) do
+                        %i.glyphicon.glyphicon-pencil.glyphicon-white
+                        edit
+                    - if policy(wiki).destroy?
+                      = link_to(wiki_path(wiki), class: 'btn btn-danger', method: :delete) do
+                        %i.glyphicon.glyphicon-trash.glyphicon-white
+                        delete
           - else
             %td No wikis found
             %td

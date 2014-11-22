@@ -1,0 +1,10 @@
+%h1 Upgrade Account
+
+.well
+  = form_tag charges_path do
+    %p Upgrade to a Premium plan! In addition to creating and viewing public wikis, with a premium plan, you can also create private wikis and collaborate with others on shared interests.
+    %p Just click on the button below, enter your payment information and start collaborating!
+    %br/
+    %script.stripe-button{"data-amount" => Amount.default, "data-key" => @stripe_btn_data[:key], :src => "https://checkout.stripe.com/checkout.js"}
+      :cdata
+        @stripe_btn_data[:amount]
