@@ -15,16 +15,11 @@
   .row
     .col-md-6
       %p{:align => "center"} Create and View Public Wikis
-      %div{:style => "text-align:center"}
-        - if !current_user
-          %a{:href => new_user_registration_path}
-            %img{:src => "https://s3.amazonaws.com/kborgmeyer-images/Freemium-Icon.jpg"}
-        - else
-          %img{:src => "https://s3.amazonaws.com/kborgmeyer-images/Freemium-Icon.jpg"}
+      %div{:style => "text-align: center"}
+        %img{:src => "https://s3.amazonaws.com/kborgmeyer-images/Freemium-Icon.jpg"}
       %h2{:align => "center"} Free Plan
     .col-md-6
       %p{:align => "center"} Create Private Wikis
-      %div{:style => "text-align:center"}
-        %a{:href => new_charge_path}
-          %img{:src => "https://s3.amazonaws.com/kborgmeyer-images/Freemium-Icon-NO11.jpg"}
+      %div{:style => "text-align: center"}
+        %img{:src => "https://s3.amazonaws.com/kborgmeyer-images/Freemium-Icon-NO11.jpg"}
       %h2{:align => "center"} Premium Plan
