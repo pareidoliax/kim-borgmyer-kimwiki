@@ -18,10 +18,11 @@
           = f.label :body, class: 'sr-only'
           = f.text_area :body, rows: 20, class: 'form-control', required: true, placeholder: "Text"
 
-        .form-group
-          %label.checkbox{ for: "public" }
-          = f.label :public
-          = f.check_box :public
+        - if current_user.admin? || !current_user.standard?
+          .form-group
+            = f.label :public do
+              = f.check_box :public
+              Public Wiki
 
         %p{align: "center"}
           = f.submit "Save", class: 'btn btn-success'

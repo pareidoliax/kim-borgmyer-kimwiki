@@ -1,12 +1,14 @@
 class Wiki < ActiveRecord::Base
   belongs_to :user
 
-  def markdown_title
-    render_as_markdown title
-  end
+  scope :visible_to, -> (user) { user && !user.standard? ? all : where(public: true) }
 
   def markdown_body
     render_as_markdown body
+  end
+
+  def markdown_title
+    render_as_markdown title
   end
 
   private

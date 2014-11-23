@@ -15,9 +15,17 @@ class User < ActiveRecord::Base
     role == 'moderator'
   end
 
+  def premium?
+    role == 'member' && premium
+  end
+
+  def standard?
+    !admin? && !moderator? && !premium?
+  end
+  
   private
 
   def assign_default_role
-    self.role = 'member'
+    self.role ||= 'member'
   end
 end

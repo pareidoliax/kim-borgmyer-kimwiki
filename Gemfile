@@ -12,6 +12,8 @@ end
 # Use sqlite3 as the development database for Active Record
 group :development do
   gem 'sqlite3'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 # Use SCSS for stylesheets

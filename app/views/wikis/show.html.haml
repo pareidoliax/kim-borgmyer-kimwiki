@@ -3,9 +3,9 @@
 %br/
 .row
   .col-md-8.col-md-offset-2
-    .panel.panel-default
-      .panel-body
-        = @wiki.markdown_body
+
+    .well
+      = @wiki.markdown_body
 
 - if policy(@wiki).edit?
   %br/
