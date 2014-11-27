@@ -15,8 +15,13 @@
         %br/
 
         .form-group
-          = f.label :body, class: "sr-only"
-          = f.text_area :body, rows: 20, class: 'form-control', required: :true
+          = f.label :body, 'Text'
+          = f.hidden_field :body, id: "body"
+          #epiceditor
+          %br/
+          = f.label 'Preview'
+          .panel.panel-body
+            #epiceditor-preview
 
         - if current_user.admin? || !current_user.standard?
           .form-group
@@ -24,6 +29,23 @@
               = f.check_box :public
               Public Wiki
 
-        %p{align: "center"}
-          = f.submit "Save", class: 'btn btn-success'
-          = link_to "Cancel", :back, class: 'btn btn-danger'
+          %div.btn-toolbar{align: "center"}
+            = f.submit "Save", class: 'btn btn-success'
+            - if !@wiki.public
+              = link_to "Collaborate", wiki_collaborations_path(@wiki), class: 'btn btn-primary', method: :get
+            = link_to "Cancel", :back, class: 'btn btn-danger'
+
+%script{:src => "epiceditor.min.js"}
+:javascript
+  var editor = new EpicEditor({
+    button: false,
+    textarea: "body"
+    }).load();
+  editor.on('update', function (){
+    document.querySelector('#epiceditor-preview').innerHTML = this.exportFile(null, 'html');
+    }).emit('update');
+  editor.getElement('editor').body.innerHTML = '#{escape_javascript(@wiki.body)}';
+  editor.getElement('previewer').body.innerHTML = '';
+  function prep() {
+    $("#body")[0].value = (editor.getElement('editor').body.innerHTML);
+  }

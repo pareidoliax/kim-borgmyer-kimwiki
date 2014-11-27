@@ -1,0 +1,10 @@
+%h1 Add Collaborator
+
+= form_for [@wiki, @collaboration] do |f|
+
+  .form-group
+    = f.label :user
+    = f.select :user_id, options_from_collection_for_select(User.all, "id", "name")
+
+  .form-group
+    = f.submit "Add Collaborator", class: 'btn btn-success'

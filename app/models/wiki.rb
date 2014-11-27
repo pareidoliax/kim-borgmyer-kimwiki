@@ -1,6 +1,10 @@
 class Wiki < ActiveRecord::Base
   belongs_to :user
 
+  has_many :collaborations
+  has_many :users, through: :collaborations
+
+  default_scope { order('updated_at DESC') }
   scope :visible_to, -> (user) { user && !user.standard? ? all : where(public: true) }
 
   def markdown_body

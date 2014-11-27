@@ -5,7 +5,7 @@ class WikisController < ApplicationController
 
     if @wiki.save
       flash[:notice] = "Wiki saved."
-      redirect_to @wiki
+      redirect_to wikis_path
     else
       flash[:notice] = "Error saving wiki; please try again."
       render :new
@@ -47,11 +47,12 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
+    params[:@wiki][:user_ids] ||= []
     authorize @wiki
 
     if @wiki.update_attributes(params.require(:wiki).permit(:title, :body, :public))
       flash[:notice] = "Wiki updated."
-      redirect_to @wiki
+      redirect_to wikis_path
     else
       flash[:error] = "Error saving wiki; please try again."
       render :edit
