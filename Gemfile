@@ -71,6 +71,3 @@ gem 'will_paginate-bootstrap'
 
 # Seed data
 gem 'faker'
-
-# Adds browser vendor prefixes automatically
-gem 'autoprefixer-rails'
