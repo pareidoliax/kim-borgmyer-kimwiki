@@ -47,8 +47,9 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
-    params[:@wiki][:user_ids] ||= []
     authorize @wiki
+
+    @wiki.user_ids = params[:wiki][:user_ids]
 
     if @wiki.update_attributes(params.require(:wiki).permit(:title, :body, :public))
       flash[:notice] = "Wiki updated."

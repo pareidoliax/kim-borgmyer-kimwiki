@@ -1,22 +1,5 @@
 class CollaborationsController < ApplicationController
   def create
-  end
-
-  def destroy
-  end
-
-  def edit
-  end
-
-  def index
-  end
-
-  def new
-  end
-
-  def show
-  end
-
-  def update
+    @wiki.user_ids = params[:wiki][:user_ids]
   end
 end
