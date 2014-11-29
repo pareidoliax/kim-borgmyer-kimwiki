@@ -47,7 +47,7 @@ class WikisController < ApplicationController
 
   def collaborators
     @wiki = Wiki.find params[:id]
-    @users = User.where.not(id: @wiki.owner.id).paginate(page: params[:page], per_page: 10).order(sort_column + " " + sort_direction)
+    @users = User.where.not(premium: nil).where.not(id: current_user).paginate(page: params[:page], per_page: 10).order(sort_column + " " + sort_direction)
 
   end
 
