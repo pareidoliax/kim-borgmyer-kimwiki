@@ -15,6 +15,10 @@ class Wiki < ActiveRecord::Base
     render_as_markdown title
   end
 
+  def owner
+    user
+  end
+
   private
 
   def render_as_markdown(text)
