@@ -5,10 +5,7 @@ Kimwiki::Application.routes.draw do
   resources :collaborations, only: [:create]
   resources :users, only: [:update]
 
-  resources :wikis do
-    resources :collaborations, only: [:index, :update], controller: 'wikis/collaborations'
-  end
-
+  resources :wikis
   get :collaborators, to: 'wikis#collaborators'
 
   get 'about' => 'welcome#about'
