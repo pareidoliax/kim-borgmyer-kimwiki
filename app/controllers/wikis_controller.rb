@@ -1,6 +1,9 @@
 class WikisController < ApplicationController
+  include WikisHelper
+
   def create
     @wiki = Wiki.new(params.require(:wiki).permit(:title, :body, :public))
+    @wiki.user = current_user
     authorize @wiki
 
     if @wiki.save
@@ -46,9 +49,8 @@ class WikisController < ApplicationController
   end
 
   def collaborators
-    @wiki = Wiki.find params[:id]
-    @users = User.where.not(premium: nil).where.not(id: current_user).paginate(page: params[:page], per_page: 10).order(sort_column + " " + sort_direction)
-
+    @wiki = Wiki.find(params[:id])
+    @users = User.where.not(premium: nil).where.not(id: current_user.id).paginate(page: params[:page], per_page: 10).order(sort_column + " " + sort_direction)
   end
 
   def update
@@ -70,13 +72,5 @@ class WikisController < ApplicationController
 
   def wiki_params
     params.require(:wiki).permit(:title, :body, :public)
-  end
-
-  def sort_column
-    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

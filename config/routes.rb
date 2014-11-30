@@ -2,7 +2,6 @@ Kimwiki::Application.routes.draw do
   devise_for :users
 
   resources :charges, only: [:new, :create]
-  resources :collaborations, only: [:create]
   resources :users, only: [:update]
 
   resources :wikis

@@ -31,8 +31,8 @@
 
           %div.btn-toolbar{align: "center"}
             = f.submit "Save", class: 'btn btn-success'
-            - if !@wiki.public
-              = link_to "Collaborate", collaborators_path(id: @wiki.id), class: 'btn btn-primary', method: :get
+            - if !@wiki.public && @wiki.user_id == current_user.id
+              = link_to "Collaborate", collaborators_path(id: @wiki.id), class: 'btn btn-primary'
             = link_to "Cancel", :back, class: 'btn btn-danger'
 
 %script{:src => "epiceditor.min.js"}
