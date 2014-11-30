@@ -43,7 +43,7 @@ end
 gem 'haml-rails'
 
 # Use Twitter Bootstrap as CSS framework
-gem 'bootstrap-sass', '~>3.1.1'
+gem 'bootstrap-sass', '~>3.3.1'
 
 # User authentication
 gem 'devise'
@@ -71,3 +71,6 @@ gem 'will_paginate-bootstrap'
 
 # Seed data
 gem 'faker'
+
+# Add browser vendor prefixes
+gem 'autoprefixer-rails'

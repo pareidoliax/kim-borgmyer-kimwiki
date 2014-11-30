@@ -16,3 +16,4 @@
 //= require bootstrap
 //= require epiceditor
 //= require_tree .
+//= require bootstrap-sprockets
