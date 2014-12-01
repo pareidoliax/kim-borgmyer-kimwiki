@@ -23,7 +23,7 @@
           .panel.panel-body
             #epiceditor-preview
 
-        - if current_user.admin? || !current_user.standard?
+        - if !current_user.standard?
           .form-group
             = f.label :public do
               = f.check_box :public

@@ -58,15 +58,25 @@ class WikisController < ApplicationController
     authorize @wiki
 
     if params[:commit] == "Update Collaborations"
-      @wiki.user_ids = params[:wiki][:user_ids]
-    end
 
-    if @wiki.update_attributes(wiki_params)
-      flash[:notice] = "Wiki updated."
-      redirect_to wikis_path
+      if @wiki.user_ids = params[:wiki][:user_ids]
+        flash[:notice] = "Collaborators updated."
+        redirect_to wikis_path
+      else
+        flash[:error] = "Error saving collaborators; please try again."
+        render :edit
+      end
+
     else
-      flash[:error] = "Error saving wiki; please try again."
-      render :edit
+
+      if @wiki.update_attributes(wiki_params)
+        flash[:notice] = "Wiki updated."
+        redirect_to wikis_path
+      else
+        flash[:error] = "Error saving wiki; please try again."
+        render :edit
+      end
+
     end
   end
 
