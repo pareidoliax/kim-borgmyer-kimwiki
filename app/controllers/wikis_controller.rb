@@ -57,7 +57,9 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     authorize @wiki
 
-    @wiki.user_ids = params[:wiki][:user_ids]
+    if params[:commit] == "Update Collaborations"
+      @wiki.user_ids = params[:wiki][:user_ids]
+    end
 
     if @wiki.update_attributes(wiki_params)
       flash[:notice] = "Wiki updated."
@@ -66,6 +68,9 @@ class WikisController < ApplicationController
       flash[:error] = "Error saving wiki; please try again."
       render :edit
     end
+  end
+
+  def update_collaborators
   end
 
   private

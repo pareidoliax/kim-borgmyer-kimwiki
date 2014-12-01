@@ -9,11 +9,9 @@
           %thead
             %tr
               %th{style: "text-align: center"}
-                / = sortable "name", "Name"
-                Name
+                = sortable "name", "Name"
               %th{style: "text-align: center"}
-                / = sortable "email", "Email"
-                Email
+                = sortable "email", "Email"
               %th{style: "text-align: center"}
                 Collaborator?
           %tbody
@@ -29,7 +27,7 @@
               %td No Collaborators found
               %td
               %td
-        = f.submit "Update Collaborations", class: 'btn btn-success'
+        = submit_tag "Update Collaborations", class: 'btn btn-success'
         / = link_to "Update Collaborations", collaborations_path, method: :post, class: 'btn btn-success'
 
 .row{align: "center"}
