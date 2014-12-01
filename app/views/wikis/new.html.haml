@@ -14,22 +14,22 @@
 
         .form-group
           = f.label :body, 'Text'
-          = f.hidden_field :body, id: "body"
+          = f.hidden_field :body, required: :true, id: "body"
           #epiceditor
           %br/
           = f.label 'Preview'
           .panel.panel-body
             #epiceditor-preview
 
-        - if current_user.admin? || !current_user.standard?
+        - if !current_user.standard?
           .form-group
             = f.label :public do
               = f.check_box :public
               Public Wiki
 
-          %div.btn-toolbar{align: "center"}
-            = f.submit "Save", class: 'btn btn-success'
-            = link_to "Cancel", :back, class: 'btn btn-danger'
+        %div.btn-toolbar{align: "center"}
+          = f.submit "Save", class: 'btn btn-success'
+          = link_to "Cancel", :back, class: 'btn btn-danger'
 
 %script{:src => "epiceditor.min.js"}
 :javascript
