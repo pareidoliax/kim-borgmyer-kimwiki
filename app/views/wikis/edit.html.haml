@@ -47,7 +47,8 @@
 %script{:src => "epiceditor.min.js"}
 :javascript
   var editor = new EpicEditor({
-    button: false
+    button: false,
+    textarea: "body"
     }).load();
   editor.on('update', function (){
     document.querySelector('#epiceditor-preview').innerHTML = this.exportFile(null, 'html');
