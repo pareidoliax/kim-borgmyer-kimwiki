@@ -1,5 +1,14 @@
 %h1{align: "center"} Edit Wiki
 
+- if @wiki.errors.any?
+  .error_messages
+    %h2
+      = pluralize(@wiki.errors.count, "error")
+      prohibited saving this wiki:
+    %ul
+      - @wiki.errors.full_messages.each do |msg|
+        %li = msg
+
 %br/
 .row
   .col-md-8.col-md-offset-2
@@ -16,7 +25,7 @@
 
         .form-group
           = f.label :body, 'Text'
-          = f.hidden_field :body, id: "body"
+          = f.hidden_field :body, required: :true, id: "body"
           #epiceditor
           %br/
           = f.label 'Preview'
@@ -38,8 +47,7 @@
 %script{:src => "epiceditor.min.js"}
 :javascript
   var editor = new EpicEditor({
-    button: false,
-    textarea: "body"
+    button: false
     }).load();
   editor.on('update', function (){
     document.querySelector('#epiceditor-preview').innerHTML = this.exportFile(null, 'html');

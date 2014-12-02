@@ -1,5 +1,14 @@
 %h1{align: "center"} New Wiki
 
+- if @wiki.errors.any?
+  .error_messages
+    %h2
+      = pluralize(@wiki.errors.count, "error")
+      prohibited saving this wiki:
+    %ul
+      - @wiki.errors.full_messages.each do |msg|
+        %li = msg
+
 %br/
 .row
   .col-md-8.col-md-offset-2
